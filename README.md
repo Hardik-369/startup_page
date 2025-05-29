@@ -37,8 +37,6 @@ A sleek, modern personal dashboard built with **HTML**, **Tailwind CSS**, and **
 ---
 
 ## 📸 Screenshot
-
-> _Add your screenshot here:_
 > ![Dashboard Screenshot](./Screenshot.jpeg)
 
 ---
