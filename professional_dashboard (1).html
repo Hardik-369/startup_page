@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body {
+            background: #000000;
+        }
+        
+        .cursive-text {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .professional-card {
+            background: #000000;
+            border: 1px solid #333333;
+            transition: all 0.3s ease;
+        }
+        
+        .professional-card:hover {
+            border-color: #555555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+        .fade-in-delay-4 { animation-delay: 0.4s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .greeting-text {
+            background: linear-gradient(135deg, #ffffff, #cccccc);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .search-bar {
+            background: #111111;
+            border: 1px solid #333333;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar:focus-within {
+            border-color: #666666;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        .quick-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background: #111111;
+            border: 1px solid #333333;
+        }
+        
+        .quick-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: #555555;
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .professional-input {
+            background: #111111;
+            border: 1px solid #333333;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .professional-input:focus {
+            border-color: #666666;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+        
+        .professional-input::placeholder {
+            color: #666666;
+        }
+        
+        .balance-text {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        
+        /* Digital Clock Styles */
+        .digital-clock-container {
+            background: #000000;
+            border: 2px solid #333333;
+            position: relative;
+        }
+        
+        .digital-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 48px;
+            font-weight: 700;
+            color: #00ff00;
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.6),
+                         0 0 40px rgba(0, 255, 0, 0.4),
+                         0 0 60px rgba(0, 255, 0, 0.2);
+            text-align: center;
+            margin-bottom: 16px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 0, 0.6),
+                           0 0 40px rgba(0, 255, 0, 0.4),
+                           0 0 60px rgba(0, 255, 0, 0.2);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 255, 0, 0.8),
+                           0 0 50px rgba(0, 255, 0, 0.6),
+                           0 0 70px rgba(0, 255, 0, 0.4);
+            }
+        }
+        
+        .date-info {
+            text-align: center;
+            color: #cccccc;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .container-custom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container-custom {
+                padding: 0 1.5rem;
+            }
+            
+            .digital-time {
+                font-size: 32px;
+            }
+        }
+        
+        .section-title {
+            color: #ffffff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .quote-text {
+            color: #e5e5e5;
+            font-style: italic;
+            line-height: 1.7;
+        }
+        
+        .quote-author {
+            color: #999999;
+            font-weight: 500;
+        }
+        
+        .professional-button {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .professional-button:hover {
+            background: #e5e5e5;
+            transform: translateY(-1px);
+        }
+        
+        .professional-button-secondary {
+            background: #333333;
+            color: #ffffff;
+            border: 1px solid #555555;
+            transition: all 0.3s ease;
+        }
+        
+        .professional-button-secondary:hover {
+            background: #444444;
+            border-color: #666666;
+        }
+        
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .add-link-text {
+            color: #cccccc;
+            transition: color 0.3s ease;
+        }
+        
+        .add-link-text:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden">
+    <div class="container-custom py-8">
+        <!-- Header Section -->
+        <header class="text-left mb-10 fade-in">
+            <h1 class="text-5xl md:text-6xl cursive-text greeting-text mb-2" id="greeting">Good morning</h1>
+            <p class="text-lg text-gray-400 font-light" id="currentDate">Loading...</p>
+        </header>
+        
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Left Column - Main Content -->
+            <div class="lg:col-span-3 space-y-8">
+                <!-- Search Bar -->
+                <div class="fade-in fade-in-delay-1">
+                    <div class="search-bar rounded-lg p-4 flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center text-lg font-bold">
+                            G
+                        </div>
+                        <input 
+                            type="text" 
+                            placeholder="Search anything..." 
+                            class="flex-1 bg-transparent outline-none text-white placeholder-gray-500"
+                            onkeypress="handleSearch(event)"
+                        >
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in fade-in-delay-2">
+                    <h2 class="text-xl section-title mb-6 cursive-text">Quick Access</h2>
+                    <div class="professional-card rounded-lg p-6">
+                        <div class="grid grid-cols-6 gap-4" id="quickLinksContainer">
+                            <!-- Quick links will be populated here -->
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-gray-700">
+                            <button onclick="showAddLinkModal()" class="add-link-text flex items-center space-x-2 text-sm">
+                                <span class="text-xl">+</span>
+                                <span>Add Link</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Today's Goal & Bank Balance Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Today's Goal -->
+                    <div class="fade-in fade-in-delay-3">
+                        <div class="professional-card rounded-lg p-6">
+                            <h3 class="text-xl section-title mb-4 cursive-text">Today's Focus</h3>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🎯</span>
+                                <input 
+                                    type="text" 
+                                    id="todayGoal" 
+                                    placeholder="What's your main goal today?"
+                                    class="flex-1 professional-input rounded-lg px-4 py-3"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bank Balance -->
+                    <div class="fade-in fade-in-delay-3">
+                        <div class="professional-card rounded-lg p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl section-title cursive-text">Balance</h3>
+                                <button onclick="editBalance()" class="text-gray-400 hover:text-white transition-colors text-sm underline">Edit</button>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-3xl balance-text font-bold mono-text" id="bankBalanceDisplay">₹91,200.00</span>
+                            </div>
+                            <p class="text-sm text-gray-500" id="lastUpdated">Last updated: Now</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Inspirational Quote -->
+                <div class="fade-in fade-in-delay-4">
+                    <div class="professional-card rounded-lg p-8">
+                        <div id="quoteContainer">
+                            <p class="text-xl cursive-text quote-text mb-4" id="quoteText"></p>
+                            <p class="quote-author text-right" id="quoteAuthor"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Digital Clock -->
+            <div class="space-y-8">
+                <div class="fade-in fade-in-delay-2">
+                    <div class="digital-clock-container rounded-lg p-8 text-center">
+                        <h2 class="text-2xl section-title mb-8 cursive-text">Current Time</h2>
+                        
+                        <!-- Digital Clock -->
+                        <div class="digital-time mono-text" id="digitalTime">00:00:00</div>
+                        
+                        <!-- Date Information -->
+                        <div class="date-info">
+                            <div class="text-lg font-semibold mb-1" id="currentDay">Monday</div>
+                            <div class="text-sm" id="currentDateSmall">January 1, 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Link Modal -->
+    <div id="addLinkModal" class="fixed inset-0 modal-overlay flex items-center justify-center z-50 hidden">
+        <div class="professional-card rounded-lg p-8 max-w-md w-full mx-4 border-2 border-gray-600">
+            <h3 class="text-2xl cursive-text mb-8 text-white">Add Quick Link</h3>
+            <div class="space-y-6">
+                <input type="text" id="linkName" placeholder="Link Name" class="w-full professional-input rounded-lg px-4 py-3">
+                <input type="url" id="linkUrl" placeholder="https://example.com" class="w-full professional-input rounded-lg px-4 py-3">
+                <input type="text" id="linkIcon" placeholder="Emoji or Icon" class="w-full professional-input rounded-lg px-4 py-3">
+                <div class="flex space-x-4">
+                    <button onclick="addQuickLink()" class="flex-1 professional-button py-3 rounded-lg font-semibold">Add</button>
+                    <button onclick="hideAddLinkModal()" class="flex-1 professional-button-secondary py-3 rounded-lg font-semibold">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Storage keys
+        const STORAGE_KEYS = {
+            quickLinks: 'dashboard_quick_links',
+            bankBalance: 'dashboard_bank_balance',
+            todayGoal: 'dashboard_today_goal'
+        };
+        
+        // Inspirational quotes
+        const quotes = [
+            { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+            { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+            { text: "The only impossible journey is the one you never begin.", author: "Tony Robbins" },
+            { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+            { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+            { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
+            { text: "Life is what happens while you're busy making other plans.", author: "John Lennon" },
+            { text: "Time is the most valuable thing we have, because it is the most irrevocable.", author: "Dietrich Bonhoeffer" }
+        ];
+        
+        // Default quick links
+        const defaultQuickLinks = [
+            { name: "YouTube", url: "https://youtube.com", icon: "📺" },
+            { name: "Gmail", url: "https://mail.google.com", icon: "📧" },
+            { name: "Notion", url: "https://notion.so", icon: "📋" },
+            { name: "GitHub", url: "https://github.com", icon: "🐙" },
+            { name: "Drive", url: "https://drive.google.com", icon: "💾" },
+            { name: "Translate", url: "https://translate.google.com", icon: "🌐" }
+        ];
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initDateTime();
+            initQuotes();
+            loadQuickLinks();
+            loadBankBalance();
+            loadTodayGoal();
+            
+            // Update time every second
+            setInterval(updateTime, 1000);
+            setInterval(updateGreeting, 60000); // Update greeting every minute
+        });
+        
+        function initDateTime() {
+            updateTime();
+            updateGreeting();
+            updateDate();
+        }
+        
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('digitalTime').textContent = timeString;
+            
+            // Update day and date
+            const dayName = now.toLocaleDateString('en-US', { weekday: 'long' });
+            const dateString = now.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            document.getElementById('currentDay').textContent = dayName;
+            document.getElementById('currentDateSmall').textContent = dateString;
+        }
+        
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            let greeting = "Good morning";
+            
+            if (hour >= 12 && hour < 17) greeting = "Good afternoon";
+            else if (hour >= 17 || hour < 6) greeting = "Good evening";
+            
+            document.getElementById('greeting').textContent = greeting;
+        }
+        
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        function initQuotes() {
+            let currentIndex = 0;
+            displayQuote(currentIndex);
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % quotes.length;
+                displayQuote(currentIndex);
+            }, 10000);
+        }
+        
+        function displayQuote(index) {
+            const quoteText = document.getElementById('quoteText');
+            const quoteAuthor = document.getElementById('quoteAuthor');
+            
+            quoteText.style.opacity = '0';
+            quoteAuthor.style.opacity = '0';
+            
+            setTimeout(() => {
+                quoteText.textContent = `"${quotes[index].text}"`;
+                quoteAuthor.textContent = `— ${quotes[index].author}`;
+                quoteText.style.opacity = '1';
+                quoteAuthor.style.opacity = '1';
+            }, 300);
+        }
+        
+        function loadQuickLinks() {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.quickLinks) || 'null');
+            const links = saved || defaultQuickLinks;
+            
+            const container = document.getElementById('quickLinksContainer');
+            container.innerHTML = '';
+            
+            links.forEach((link, index) => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link.url;
+                linkElement.target = '_blank';
+                linkElement.className = 'quick-link rounded-lg p-4 flex flex-col items-center justify-center text-center text-white';
+                linkElement.innerHTML = `
+                    <div class="text-2xl mb-2">${link.icon}</div>
+                    <div class="text-sm font-medium truncate w-full">${link.name}</div>
+                `;
+                
+                linkElement.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    if (confirm(`Remove ${link.name}?`)) {
+                        removeQuickLink(index);
+                    }
+                });
+                
+                container.appendChild(linkElement);
+            });
+        }
+        
+        function showAddLinkModal() {
+            document.getElementById('addLinkModal').classList.remove('hidden');
+        }
+        
+        function hideAddLinkModal() {
+            document.getElementById('addLinkModal').classList.add('hidden');
+            document.getElementById('linkName').value = '';
+            document.getElementById('linkUrl').value = '';
+            document.getElementById('linkIcon').value = '';
+        }
+        
+        function addQuickLink() {
+            const name = document.getElementById('linkName').value.trim();
+            const url = document.getElementById('linkUrl').value.trim();
+            const icon = document.getElementById('linkIcon').value.trim() || '🔗';
+            
+            if (name && url) {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.quickLinks) || 'null');
+                const links = saved || defaultQuickLinks;
+                
+                links.push({ name, url, icon });
+                localStorage.setItem(STORAGE_KEYS.quickLinks, JSON.stringify(links));
+                
+                loadQuickLinks();
+                hideAddLinkModal();
+            }
+        }
+        
+        function removeQuickLink(index) {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.quickLinks) || 'null');
+            const links = saved || defaultQuickLinks;
+            
+            links.splice(index, 1);
+            localStorage.setItem(STORAGE_KEYS.quickLinks, JSON.stringify(links));
+            loadQuickLinks();
+        }
+        
+        function loadBankBalance() {
+            const saved = localStorage.getItem(STORAGE_KEYS.bankBalance);
+            if (saved) {
+                const balance = parseFloat(saved);
+                document.getElementById('bankBalanceDisplay').textContent = `₹${balance.toLocaleString('en-IN', {minimumFractionDigits: 2})}`;
+            }
+            
+            const lastUpdated = localStorage.getItem(STORAGE_KEYS.bankBalance + '_updated');
+            if (lastUpdated) {
+                const date = new Date(parseInt(lastUpdated));
+                const now = new Date();
+                const diffMinutes = Math.floor((now - date) / 60000);
+                
+                let updateText = 'Just now';
+                if (diffMinutes > 0) {
+                    if (diffMinutes < 60) updateText = `${diffMinutes}m ago`;
+                    else if (diffMinutes < 1440) updateText = `${Math.floor(diffMinutes/60)}h ago`;
+                    else updateText = `${Math.floor(diffMinutes/1440)}d ago`;
+                }
+                
+                document.getElementById('lastUpdated').textContent = `Last updated: ${updateText}`;
+            }
+        }
+        
+        function editBalance() {
+            const current = localStorage.getItem(STORAGE_KEYS.bankBalance) || '91200.00';
+            const newBalance = prompt('Enter new balance (₹):', current);
+            
+            if (newBalance !== null && !isNaN(parseFloat(newBalance))) {
+                localStorage.setItem(STORAGE_KEYS.bankBalance, parseFloat(newBalance).toString());
+                localStorage.setItem(STORAGE_KEYS.bankBalance + '_updated', Date.now().toString());
+                loadBankBalance();
+            }
+        }
+        
+        function loadTodayGoal() {
+            const saved = localStorage.getItem(STORAGE_KEYS.todayGoal);
+            if (saved) {
+                document.getElementById('todayGoal').value = saved;
+            }
+            
+            document.getElementById('todayGoal').addEventListener('input', function() {
+                localStorage.setItem(STORAGE_KEYS.todayGoal, this.value);
+            });
+        }
+        
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value.trim();
+                if (query) {
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+                    event.target.value = '';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
