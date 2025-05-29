@@ -1,45 +1,98 @@
-🧠 Professional Default Chrome Page
-A sleek, modern personal dashboard built with HTML, CSS (Tailwind), and Vanilla JavaScript. It combines productivity and elegance, offering features like:
+# 🧠 Professional Default Chrome Page
 
-Live digital clock
+A sleek, modern personal dashboard built with **HTML**, **Tailwind CSS**, and **JavaScript**. This customizable homepage combines productivity and elegance, offering quick access to essential tools and motivation at a glance.
 
-Daily goal input
+---
 
-Bank balance tracker
+## 🚀 Features
 
-Inspirational quotes
+### 🕒 Digital Clock & Date
+- Displays a live, real-time clock and formatted date.
+- Automatically updates every second for precision.
 
-Quick access links
+### 💬 Dynamic Greeting
+- Greets you based on the time of day:
+  - **Good Morning**
+  - **Good Afternoon**
+  - **Good Evening**
 
-🚀 Features
-🕒 Digital Clock & Date
-Displays real-time clock and formatted date.
+### 💡 Inspirational Quotes
+- Rotates through a selection of motivational quotes every 10 seconds.
+- Keeps you inspired throughout the day.
 
-Automatically updates every second.
+### 🎯 Daily Focus
+- Enter your **main goal** or **focus** for the day.
+- Stored locally using `localStorage` to persist across sessions.
 
-💬 Dynamic Greeting
-Adjusts greeting based on time of day: Good morning, afternoon, or evening.
+### 💰 Bank Balance
+- View and update your personal balance.
+- Quick-edit with instant save to `localStorage`.
 
-💡 Inspirational Quotes
-Cycles through famous motivational quotes every 10 seconds.
+### 🔗 Quick Access Links
+- Preloaded with useful links (YouTube, Gmail, Notion, etc.).
+- Add your own custom links with icons or emojis.
+- Remove links with a simple **right-click**.
+- Fully persisted in the browser using `localStorage`.
 
-🎯 Daily Focus
-Input your primary goal for the day.
+---
 
-Saved locally in your browser (localStorage).
+## 📸 Screenshot
 
-💰 Bank Balance
-View and edit your balance with simple UI.
+> _Add your screenshot here:_
+> ![Dashboard Screenshot](./Screenshot.jpeg)
 
-Updates stored in localStorage.
+---
 
-🔗 Quick Access Links
-Default set of links (YouTube, Gmail, Notion, etc.).
+## 🛠️ Built With
 
-Add your own custom links with icons/emojis.
+- **HTML5** – Semantic markup
+- **Tailwind CSS** – Utility-first styling framework
+- **JavaScript (ES6)** – Logic and interactivity
+- **Google Fonts** – `Playfair Display`, `Dancing Script`, `JetBrains Mono`
 
-Remove links via right-click context menu.
+---
 
-Persisted in localStorage.
+## 🧪 Getting Started
 
-📸 Screenshot
+### 📂 Open Locally
+1. Clone or download this repository.
+2. Open `index.html` in your browser.
+
+### 🔌 With Live Server (VS Code)
+1. Install the **Live Server** extension.
+2. Right-click on `index.html` > **Open with Live Server**.
+
+---
+
+## 💾 Data Persistence
+
+All data is stored in the browser's `localStorage`:
+- `dashboard_quick_links`
+- `dashboard_today_goal`
+- `dashboard_bank_balance`
+
+You can clear these manually via **DevTools** > **Application** > **Local Storage** to reset the dashboard.
+
+---
+
+## 🧰 Customization
+
+- Modify default links in the `defaultQuickLinks` array.
+- Add more motivational quotes in the `quotes` array.
+- Change theme, layout, and typography via Tailwind utility classes.
+
+---
+
+## 📄 License
+
+This project is open-source and available under the **MIT License**.
+
+---
+
+## 🙌 Acknowledgements
+
+- [Tailwind CSS](https://tailwindcss.com)
+- [Google Fonts](https://fonts.google.com)
+- Inspired by modern productivity tools and personal dashboards.
+
+---
